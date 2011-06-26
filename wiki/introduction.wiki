@@ -1,5 +1,7 @@
 #summary The AirplaySDK Configure Extension Project Introduction
 #labels Featured
+= NOTE! =
+This project *is moving* to the [http://github.com/marmalade/Configure-Extension GitHub Configure-Extension] repository.
 
 = What's this? =
 This simple code makes possible to configure the AirplaySDK `mkb` or `mkf` project automatically. It was initially created to use in Open Source Code porting projects.
