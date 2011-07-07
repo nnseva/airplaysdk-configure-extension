@@ -1,7 +1,7 @@
 #summary The AirplaySDK Configure Extension Project Introduction
 #labels Featured
 = NOTE! =
-This project *is moved* to the [http://github.com/marmalade/Configure-Extension GitHub Marmalade Configure-Extension] repository. This repository _is freezed and will not be updated_, see actual content at the [http://github.com/marmalade/Configure-Extension GitHub Marmalade Configure-Extension] repository.
+This project *is moved* to the [http://github.com/marmalade/Configure-Extension GitHub Marmalade Configure-Extension] repository. The Google Code AirplaySDK Configure Extension Project repository _is freezed and will not be updated_, see actual content at the [http://github.com/marmalade/Configure-Extension GitHub Marmalade Configure-Extension] repository.
 
 = What's this? =
 This simple code makes possible to configure the AirplaySDK `mkb` or `mkf` project automatically. It was initially created to use in Open Source Code porting projects.
