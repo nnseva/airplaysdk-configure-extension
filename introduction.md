@@ -1,0 +1,55 @@
+# NOTE! #
+This project **is moved** to the [GitHub Marmalade Configure-Extension](http://github.com/marmalade/Configure-Extension) repository. The Google Code AirplaySDK Configure Extension Project repository _is freezed and will not be updated_, see actual content at the [GitHub Marmalade Configure-Extension](http://github.com/marmalade/Configure-Extension) repository.
+
+# What's this? #
+This simple code makes possible to configure the AirplaySDK `mkb` or `mkf` project automatically. It was initially created to use in Open Source Code porting projects.
+
+# Installation #
+You can just copy the `start_configure.py` file to the `"<AirplaySDK-Installation-Root>\s3e\makefile_builder\extensions\"` folder. The `install.bat` file makes it simpler for Windows users.
+
+# Using #
+Insert the following line into the `options` block of your `mkb` or `mkf` file:
+```
+    extension=start_configure
+```
+The extension will be activated also if any of subprojects contains this option.
+
+The extension allows to have a `configure.py` Python script in the directory where the project file (`mkb` or `mkf`) exists. This script will be executed every time when the `mkb` is running. You are not oblige to have a `configure.py` script in your project. Only found `configure.py` scripts will be executed.
+
+Additionaly, the `run()` function will be called from the `configure.py`, if it is defined there. You are not oblige to have a `run()` function in your `configure.py` script of the project. The `run()` function will be called only for those `configure.py` scripts, where it was found.
+
+Parameters passed to the `run()` function:
+  * `module_path` - path to the mkb or mkf file
+  * `global_path` - path to the initial folder where the mkb file exists
+  * `args` - additional parameters (you can inspect them yourself)
+
+It is your choice, what particular job should be executed by the `configure.py` script. In my own case, it just copies some patched or additional files into the upstream directory of just downloaded and extracted open source library source code.
+
+# Example #
+## c-ares library porting project `mkf` file (partially) ##
+```
+upstream
+{
+	url="http://c-ares.haxx.se/c-ares-1.7.4.tar.gz"
+}
+
+version 1.7.4
+
+options
+{
+	module_path_append="$AIRPLAY_ROOT/modules/third_party"
+	strict=0
+	extension=start_configure
+}
+...
+```
+## c-ares library porting project `configure.py` file ##
+```
+import os
+import sys
+import shutil
+
+def run(module_path, global_path, args=None):
+    path = os.path.dirname(module_path)
+    shutil.copy(os.path.join(path,"ares_build.h"),os.path.join(path,"upstream"))
+```
